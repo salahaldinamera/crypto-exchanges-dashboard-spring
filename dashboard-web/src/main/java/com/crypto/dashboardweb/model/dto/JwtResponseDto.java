@@ -1,7 +1,11 @@
 package com.crypto.dashboardweb.model.dto;
 
 import com.crypto.dashboardweb.model.enums.UserRole;
+import lombok.Getter;
+import lombok.Setter;
 
+@Getter
+@Setter
 public class JwtResponseDto {
     private final String jwtToken;
     private String username;
@@ -15,25 +19,5 @@ public class JwtResponseDto {
         this.userRole = userRole;
         this.userId = userId;
         this.defaultPasswordChanged = defaultPasswordChanged;
-    }
-
-    public String getJwtToken() {
-        return jwtToken;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public UserRole getUserRole() {
-        return userRole;
-    }
-
-    public Long getUserId() {
-        return userId;
-    }
-
-    public boolean isDefaultPasswordChanged() {
-        return defaultPasswordChanged;
     }
 }
