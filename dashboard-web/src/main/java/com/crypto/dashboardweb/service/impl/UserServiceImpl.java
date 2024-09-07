@@ -34,7 +34,7 @@ public class UserServiceImpl implements UserService {
     public User create(UserCreateDto userCreateDto) throws UserException {
         User user = new User(userCreateDto);
 
-        if(userRepository.findByEmail(user.getEmail()).isPresent())
+        if(userRepository.findByUsername(user.getUsername()).isPresent())
             throw new UserException(UserExceptionEnum.USER_EXIST);
 
         if (userCreateDto.getPassword() == null)
@@ -65,14 +65,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User getUserByUsername(String username) throws UserException {
-        return getUserByEmail(username);
+        return getUserByUsername(username);
     }
-
-    @Override
-    public User getUserByEmail(String email) throws UserException {
-        Optional<User> user = userRepository.findByEmail(email);
-        if(user.isEmpty()) throw new UserException(UserExceptionEnum.USER_NOT_FOUND);
-        return user.get();    }
 
     @Override
     public User update(Long id, UserUpdateDto userUpdateDto) throws UserException {
@@ -95,7 +89,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         Optional<User> user;
-        user = userRepository.findByEmail(username);
+        user = userRepository.findByUsername(username);
         if(user.isEmpty()) throw new UsernameNotFoundException("User not found with username : " + username);
         return user.get();
     }

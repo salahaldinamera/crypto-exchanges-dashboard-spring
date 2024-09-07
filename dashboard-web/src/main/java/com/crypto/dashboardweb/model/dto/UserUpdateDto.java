@@ -5,7 +5,7 @@ import com.crypto.dashboardweb.model.enums.UserRole;
 public class UserUpdateDto {
     private String firstName;
     private String lastName;
-    private String email;
+    private String username;
     private UserRole userRole;
 
     public String getFirstName() {
@@ -24,12 +24,12 @@ public class UserUpdateDto {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public UserRole getUserRole() {

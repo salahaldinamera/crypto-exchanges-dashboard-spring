@@ -98,6 +98,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         user.getAccessToken().setExpirationDate(cal.getTime());
         userService.updateInternal(user);
 
-        return new JwtResponseDto(token, user.getEmail(), user.getRole(), user.getId(), user.isDefaultPasswordChanged());
+        return new JwtResponseDto(token, user.getUsername(), user.getRole(), user.getId(), user.isDefaultPasswordChanged());
     }
 }

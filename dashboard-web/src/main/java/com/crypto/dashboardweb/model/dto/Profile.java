@@ -1,25 +1,25 @@
 package com.crypto.dashboardweb.model.dto;
 
 public class Profile {
-    private String email;
+    private String username;
     private String role;
     private String token;
 
     public Profile() {
     }
 
-    public Profile(String email, String role, String token) {
-        this.email = email;
+    public Profile(String username, String role, String token) {
+        this.username = username;
         this.role = role;
         this.token = token;
     }
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getRole() {

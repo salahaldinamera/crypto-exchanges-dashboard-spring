@@ -40,13 +40,6 @@ public interface UserService extends UserDetailsService {
     User getUserByUsername(String username) throws UserException;
 
     /**
-     * Get user by email
-     * @param email
-     * @return
-     */
-    User getUserByEmail(String email) throws UserException;
-
-    /**
      * Update user service
      * @param id
      * @param userUpdateDto

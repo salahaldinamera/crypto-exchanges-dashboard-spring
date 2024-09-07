@@ -37,7 +37,7 @@ public class User implements UserDetails {
     private String lastName;
 
     @Column(unique = true)
-    private String email;
+    private String username;
 
     @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
@@ -62,7 +62,7 @@ public class User implements UserDetails {
     public User(UserCreateDto userCreateDto) {
         this.firstName = userCreateDto.getFirstName();
         this.lastName = userCreateDto.getLastName();
-        this.email = userCreateDto.getEmail();
+        this.username = userCreateDto.getUsername();
         this.password = userCreateDto.getPassword();
         this.role = userCreateDto.getUserRole();
         this.defaultPasswordChanged = false;
@@ -77,7 +77,7 @@ public class User implements UserDetails {
 
     @Override
     public String getUsername() {
-        return email;
+        return username;
     }
 
     @Override
@@ -124,12 +124,8 @@ public class User implements UserDetails {
         this.lastName = lastName;
     }
 
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     @Override
@@ -176,7 +172,7 @@ public class User implements UserDetails {
     public void update(UserUpdateDto userUpdateDto) {
         if(userUpdateDto.getFirstName() != null) this.setFirstName(userUpdateDto.getFirstName());
         if(userUpdateDto.getLastName() != null) this.setLastName(userUpdateDto.getLastName());
-        if(userUpdateDto.getEmail() != null) this.setEmail(userUpdateDto.getEmail());
+        if(userUpdateDto.getUsername() != null) this.setUsername(userUpdateDto.getUsername());
         if(userUpdateDto.getUserRole() != null) this.setRole(userUpdateDto.getUserRole());
     }
 }
