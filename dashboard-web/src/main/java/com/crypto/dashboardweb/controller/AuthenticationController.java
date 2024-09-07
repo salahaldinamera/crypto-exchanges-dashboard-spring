@@ -1,9 +1,12 @@
 package com.crypto.dashboardweb.controller;
 
 
+import com.crypto.dashboardweb.model.User;
 import com.crypto.dashboardweb.model.dto.JwtRequestDto;
 import com.crypto.dashboardweb.model.dto.JwtResponseDto;
+import com.crypto.dashboardweb.model.dto.UserCreateDto;
 import com.crypto.dashboardweb.service.AuthenticationService;
+import com.crypto.dashboardweb.service.UserService;
 import com.crypto.dashboardweb.service.exceptions.AuthenticationException;
 import com.crypto.dashboardweb.service.exceptions.UserException;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -28,6 +31,9 @@ public class AuthenticationController {
     @Autowired
     private AuthenticationService authenticationService;
 
+    @Autowired
+    private UserService userService;
+
     /**
      * Create authentication token for the user if authorized
      * @param jwtRequestDto
@@ -35,9 +41,15 @@ public class AuthenticationController {
      * @throws AuthenticationException
      * @throws UserException
      */
-    @PostMapping
-    public ResponseEntity<JwtResponseDto> createAuthenticationToken(@RequestBody JwtRequestDto jwtRequestDto) throws AuthenticationException, UserException {
+    @PostMapping("sign-in")
+    public ResponseEntity<JwtResponseDto> signIn(@RequestBody JwtRequestDto jwtRequestDto) throws AuthenticationException, UserException {
         JwtResponseDto response = authenticationService.authenticate(jwtRequestDto);
         return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @PostMapping("sign-up")
+    public ResponseEntity<User> signUp (@RequestBody UserCreateDto userCreateDto) throws UserException {
+        User user = userService.create(userCreateDto);
+        return new ResponseEntity<>(user, HttpStatus.OK);
     }
 }

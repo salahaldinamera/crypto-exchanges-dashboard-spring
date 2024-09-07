@@ -5,11 +5,9 @@ import com.crypto.dashboardweb.model.User;
 import com.crypto.dashboardweb.model.dto.UserCreateDto;
 import com.crypto.dashboardweb.model.dto.UserDto;
 import com.crypto.dashboardweb.model.dto.UserUpdateDto;
-import com.crypto.dashboardweb.model.enums.UserRole;
 import com.crypto.dashboardweb.service.UserService;
 import com.crypto.dashboardweb.service.exceptions.UserException;
 import com.crypto.dashboardweb.service.exceptions.enums.UserExceptionEnum;
-import jakarta.annotation.PostConstruct;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -31,26 +29,6 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-
-    @PostConstruct
-    public void createInitialUser() throws UserException {
-        UserCreateDto userCreateDto = new UserCreateDto();
-        userCreateDto.setEmail("admin@crypto.com");
-        userCreateDto.setPassword("ChangeMe123@");
-        userCreateDto.setFirstName("Admin");
-        userCreateDto.setLastName("Crypto");
-        userCreateDto.setUserRole(UserRole.ADMIN);
-
-        if (userRepository.findByEmail(userCreateDto.getEmail()).isPresent()) {
-            log.info("ADMIN USER ALREADY EXISTS");
-        } else {
-            User user = create(userCreateDto);
-
-            if (user != null) {
-                log.info("ADMIN USER CREATED");
-            }
-        }
-    }
 
     @Override
     public User create(UserCreateDto userCreateDto) throws UserException {
