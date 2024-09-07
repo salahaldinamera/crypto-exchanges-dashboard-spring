@@ -48,7 +48,6 @@ public class GlobalExceptionHandler {
             return new ResponseEntity<>(adminException.getExceptionMessage(), headers, getHttpStatusCode(adminException));
         }
 
-        log.error("An exception has been caught by the global exception handler: \n" + ex);
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         return  new ResponseEntity<>(ex.getMessage(), headers, status);
     }
