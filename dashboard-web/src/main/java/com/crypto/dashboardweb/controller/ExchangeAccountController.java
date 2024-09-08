@@ -13,7 +13,7 @@ import java.util.List;
 
 @Tag(name = "Exchange Account", description = "Exchange Account APIs")
 @RestController
-@RequestMapping("/api/v1/exchange-accounts/")
+@RequestMapping("/api/v1/exchanges-accounts/")
 public class ExchangeAccountController {
 
     @Autowired

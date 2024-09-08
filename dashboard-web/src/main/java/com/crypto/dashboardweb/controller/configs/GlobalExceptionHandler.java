@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
 
     private static final Map<String, HttpStatus> httpStatusMap = new HashMap<>(){{
         put(AccessTokenExceptionEnum.ACCESS_TOKEN_NOT_FOUND.name(), HttpStatus.FORBIDDEN);
-        put(AuthenticationExceptionEnum.EMAIL_NOT_FOUND.name(), HttpStatus.FORBIDDEN);
+        put(AuthenticationExceptionEnum.USERNAME_NOT_FOUND.name(), HttpStatus.FORBIDDEN);
         put(AuthenticationExceptionEnum.WRONG_PASSWORD.name(), HttpStatus.FORBIDDEN);
         put(UserExceptionEnum.USER_EXIST.name(), HttpStatus.CONFLICT);
     }};
