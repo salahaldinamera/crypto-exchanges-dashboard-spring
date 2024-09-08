@@ -21,6 +21,7 @@ public class ExchangeAccount {
     private String logo;
 
     @OneToMany(cascade = CascadeType.ALL,orphanRemoval = true)
+    @JoinColumn(name = "exchange_account_id")
     @JsonManagedReference
     private List<ExchangeAccountApi> exchangeAccountApis;
 }

@@ -19,7 +19,8 @@ public class ExchangeAccountApi {
     private String apiSecret;
     private boolean demo;
 
-    @ManyToOne()
+    @ManyToOne
+    @JoinColumn(name = "exchange_account_id", updatable = false)
     @JsonBackReference
     private ExchangeAccount exchangeAccountId;
 }
