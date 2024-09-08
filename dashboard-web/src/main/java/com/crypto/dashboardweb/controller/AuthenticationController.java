@@ -50,6 +50,6 @@ public class AuthenticationController {
     @PostMapping("sign-up")
     public ResponseEntity<User> signUp (@RequestBody UserCreateDto userCreateDto) throws UserException {
         User user = userService.create(userCreateDto);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 }
