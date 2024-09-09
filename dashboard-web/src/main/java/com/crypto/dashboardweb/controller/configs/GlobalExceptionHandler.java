@@ -1,6 +1,6 @@
 package com.crypto.dashboardweb.controller.configs;
 
-import com.crypto.dashboardweb.service.exceptions.AdminException;
+import com.crypto.dashboardweb.service.exceptions.DashboardException;
 import com.crypto.dashboardweb.service.exceptions.enums.AccessTokenExceptionEnum;
 import com.crypto.dashboardweb.service.exceptions.enums.AuthenticationExceptionEnum;
 import com.crypto.dashboardweb.service.exceptions.enums.UserExceptionEnum;
@@ -29,7 +29,7 @@ public class GlobalExceptionHandler {
 
     private static final Map<String, HttpStatus> httpStatusMap = new HashMap<>(){{
         put(AccessTokenExceptionEnum.ACCESS_TOKEN_NOT_FOUND.name(), HttpStatus.FORBIDDEN);
-        put(AuthenticationExceptionEnum.EMAIL_NOT_FOUND.name(), HttpStatus.FORBIDDEN);
+        put(AuthenticationExceptionEnum.USERNAME_NOT_FOUND.name(), HttpStatus.FORBIDDEN);
         put(AuthenticationExceptionEnum.WRONG_PASSWORD.name(), HttpStatus.FORBIDDEN);
         put(UserExceptionEnum.USER_EXIST.name(), HttpStatus.CONFLICT);
     }};
@@ -43,18 +43,18 @@ public class GlobalExceptionHandler {
     public final ResponseEntity<String> handleException(Exception ex) {
         HttpHeaders headers = new HttpHeaders();
 
-        if(ex instanceof AdminException adminException) {
-            log.error(((AdminException) ex).getExceptionMessage());
-            return new ResponseEntity<>(adminException.getExceptionMessage(), headers, getHttpStatusCode(adminException));
+        if(ex instanceof DashboardException dashboardException) {
+            log.error(((DashboardException) ex).getExceptionMessage());
+            return new ResponseEntity<>(dashboardException.getExceptionMessage(), headers, getHttpStatusCode(dashboardException));
         }
 
         HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
         return  new ResponseEntity<>(ex.getMessage(), headers, status);
     }
 
-    private HttpStatus getHttpStatusCode(AdminException adminException) {
+    private HttpStatus getHttpStatusCode(DashboardException dashboardException) {
         HttpStatus httpStatus = HttpStatus.INTERNAL_SERVER_ERROR;
-        if (httpStatusMap.containsKey(adminException.getExceptionMessage())) httpStatus = httpStatusMap.get(adminException.getExceptionMessage());
+        if (httpStatusMap.containsKey(dashboardException.getExceptionMessage())) httpStatus = httpStatusMap.get(dashboardException.getExceptionMessage());
         return httpStatus;
     }
 

@@ -2,7 +2,7 @@ package com.crypto.dashboardweb.service.exceptions;
 
 import com.crypto.dashboardweb.service.exceptions.enums.AccessTokenExceptionEnum;
 
-public class AccessTokenException extends AdminException {
+public class AccessTokenException extends DashboardException {
     private AccessTokenExceptionEnum accessTokenExceptionEnum;
 
     public AccessTokenException(AccessTokenExceptionEnum accessTokenExceptionEnum) {

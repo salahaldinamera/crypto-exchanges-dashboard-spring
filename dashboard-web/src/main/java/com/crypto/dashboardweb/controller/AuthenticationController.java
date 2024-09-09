@@ -5,6 +5,7 @@ import com.crypto.dashboardweb.model.User;
 import com.crypto.dashboardweb.model.dto.JwtRequestDto;
 import com.crypto.dashboardweb.model.dto.JwtResponseDto;
 import com.crypto.dashboardweb.model.dto.UserCreateDto;
+import com.crypto.dashboardweb.model.enums.UserRole;
 import com.crypto.dashboardweb.service.AuthenticationService;
 import com.crypto.dashboardweb.service.UserService;
 import com.crypto.dashboardweb.service.exceptions.AuthenticationException;
@@ -49,7 +50,8 @@ public class AuthenticationController {
 
     @PostMapping("sign-up")
     public ResponseEntity<User> signUp (@RequestBody UserCreateDto userCreateDto) throws UserException {
+        userCreateDto.setUserRole(UserRole.ADMIN);
         User user = userService.create(userCreateDto);
-        return new ResponseEntity<>(user, HttpStatus.OK);
+        return new ResponseEntity<>(user, HttpStatus.CREATED);
     }
 }

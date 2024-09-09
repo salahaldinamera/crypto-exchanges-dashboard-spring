@@ -44,7 +44,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         try {
             userDetails = userService.loadUserByUsername(jwtRequestDto.getUsername());
         } catch (Exception e) {
-            throw new AuthenticationException(AuthenticationExceptionEnum.EMAIL_NOT_FOUND);
+            throw new AuthenticationException(AuthenticationExceptionEnum.USERNAME_NOT_FOUND);
         }
 
         if (!bCryptPasswordEncoder.matches(jwtRequestDto.getPassword(), userDetails.getPassword())) {
@@ -67,10 +67,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         try {
             userDetails = userService.loadUserByUsername(jwtRequest.getUsername());
         } catch (UsernameNotFoundException e) {
-            throw new AuthenticationException(AuthenticationExceptionEnum.EMAIL_NOT_FOUND);
+            throw new AuthenticationException(AuthenticationExceptionEnum.USERNAME_NOT_FOUND);
         }
         if (userDetails == null) {
-            throw new AuthenticationException(AuthenticationExceptionEnum.EMAIL_NOT_FOUND);
+            throw new AuthenticationException(AuthenticationExceptionEnum.USERNAME_NOT_FOUND);
         }
         if (!bCryptPasswordEncoder.matches(jwtRequest.getPassword(), userDetails.getPassword())) {
             throw new AuthenticationException(AuthenticationExceptionEnum.WRONG_PASSWORD);
