@@ -1,32 +1,49 @@
-# crypto-exchanges-dashboard-spring
+# Crypto Exchanges Dashboard Spring
+
+## Project Overview
+
+The `Crypto Exchanges Dashboard Spring` project is designed to create APIs for managing multiple cryptocurrency exchanges from a single dashboard. It enables streamlined access to different exchanges and helps manage trading operations, balances, and other exchange-related functions.
+
+## Features
+
+- **Unified Exchange Management**: Handle multiple crypto exchanges in one place.
+- **API-Driven**: Provides RESTful APIs for managing various crypto exchange operations.
+- **Secure and Scalable**: Built with Spring Boot to ensure security and scalability.
+- **Modular Design**: Easily extendable to support additional exchanges in the future.
+
+## Tech Stack
+
+- **Backend Framework**: Spring Boot `3.3.3`
+- **Java Version**: `22`
+- **Database**: PostgreSQL (runtime dependency)
+- **Security**: Spring Security
+- **API Documentation**: Springdoc OpenAPI UI `2.5.0`
+- **Build Tool**: Maven
+
+## Dependencies
+
+The project includes the following key dependencies:
+
+- `spring-boot-starter-data-jpa`: To handle database operations using JPA.
+- `spring-boot-starter-web`: For building RESTful web services.
+- `spring-boot-starter-security`: To secure the application.
+- `spring-boot-devtools`: To enhance development productivity.
+- `postgresql`: PostgreSQL database driver.
+- `lombok 1.18.34`: To reduce boilerplate code with annotations.
+- `jaxb-api 2.3.1`: For XML binding support.
+- `jjwt 0.9.1`: For handling JWT (JSON Web Tokens) in authentication.
+- `springdoc-openapi-starter-webmvc-ui 2.5.0`: For generating API documentation.
 
 ## Getting Started
 
-### Reference Documentation
+### Prerequisites
 
-For further reference, please consider the following sections:
+- **Java 22**
+- **Maven 3.6+**
+- **PostgreSQL** (or any supported database)
 
-* [Official Apache Maven documentation](https://maven.apache.org/guides/index.html)
-* [Spring Boot Maven Plugin Reference Guide](https://docs.spring.io/spring-boot/3.3.3/maven-plugin)
-* [Create an OCI image](https://docs.spring.io/spring-boot/3.3.3/maven-plugin/build-image.html)
-* [Spring Data JPA](https://docs.spring.io/spring-boot/docs/3.3.3/reference/htmlsingle/index.html#data.sql.jpa-and-spring-data)
-* [Spring Boot DevTools](https://docs.spring.io/spring-boot/docs/3.3.3/reference/htmlsingle/index.html#using.devtools)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/3.3.3/reference/htmlsingle/index.html#web)
+### Installation
 
-### Guides
-
-The following guides illustrate how to use some features concretely:
-
-* [Accessing Data with JPA](https://spring.io/guides/gs/accessing-data-jpa/)
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/rest/)
-
-### Maven Parent overrides
-
-Due to Maven's design, elements are inherited from the parent POM to the project POM.
-While most of the inheritance is fine, it also inherits unwanted elements like `<license>` and `<developers>` from the
-parent.
-To prevent this, the project POM contains empty overrides for these elements.
-If you manually switch to a different parent and actually want the inheritance, you need to remove those overrides.
-
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/crypto-exchanges-dashboard-spring.git
