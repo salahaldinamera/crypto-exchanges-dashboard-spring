@@ -47,3 +47,10 @@ The project includes the following key dependencies:
 1. Clone the repository:
    ```bash
    git clone https://github.com/your-username/crypto-exchanges-dashboard-spring.git
+
+
+### Todo List
+
+- Add XChange Library for interacting with different cryptocurrency exchanges.
+- Create Accounts Overview APIs to manage account balances and related data.
+- Manage Trades APIs for creating, viewing, and managing trades across exchanges.
