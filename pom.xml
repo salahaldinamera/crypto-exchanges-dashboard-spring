@@ -17,6 +17,7 @@
 
     <modules>
         <module>dashboard-web</module>
+        <module>xchange-service</module>
     </modules>
 
     <properties>
