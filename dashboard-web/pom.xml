@@ -70,6 +70,12 @@
             <version>2.5.0</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.crypto</groupId>
+            <artifactId>xchange-service</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
+        </dependency>
+
     </dependencies>
 
     <build>
