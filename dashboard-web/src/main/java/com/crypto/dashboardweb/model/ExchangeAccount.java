@@ -24,4 +24,22 @@ public class ExchangeAccount {
     @JoinColumn(name = "exchange_account_id")
     @JsonManagedReference
     private List<ExchangeAccountApi> apis;
+
+    public ExchangeAccountApi getDemoApi() {
+        for (ExchangeAccountApi api : this.apis) {
+            if (api.isDemo()) {
+                return api;
+            }
+        }
+        return null;
+    }
+
+    public ExchangeAccountApi getRealApi() {
+        for (ExchangeAccountApi api : this.apis) {
+            if (!api.isDemo()) {
+                return api;
+            }
+        }
+        return null;
+    }
 }
